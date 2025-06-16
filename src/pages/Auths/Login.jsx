@@ -1,6 +1,7 @@
 import React, { use } from 'react'
 import { Link } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const {googleSignIn, signIn}=use(AuthContext)
@@ -12,15 +13,32 @@ const formData=new FormData(e.target);
     const {email,password}= Object.fromEntries(formData.entries())
     signIn(email,password)
      .then((result) => {
-               console.log(result)
+             Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "You are successfully loged in",
+          showConfirmButton: false,
+          timer: 1500
+        });
             }).catch((error) => {
-              
+               Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Your password/email is wrong!",
+        
+      });
             })
    }
   const handleGoogle= () => { 
 googleSignIn()
  .then((result) => {
-               console.log(result)
+              Swal.fire({
+                          position: "top-end",
+                          icon: "success",
+                          title: "You are successfully loged in",
+                          showConfirmButton: false,
+                          timer: 1500
+                        });
             }).catch((error) => {
               
             })
