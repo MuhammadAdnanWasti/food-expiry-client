@@ -1,17 +1,19 @@
 import React, { use, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
-import { Link } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 import Swal from 'sweetalert2'
 
 const Register = () => {
-  const {googleSignIn,createUser}=use(AuthContext)
+  const {googleSignIn,createUser,updatePro}=use(AuthContext)
   const [errMessage, setErrMessage] = useState('');
+    const navigate=useNavigate()
+    const location=useLocation()
   const handleRegister=(e) => { 
     e.preventDefault()
     const formData=new FormData(e.target);
   
   
-    const {email,password}= Object.fromEntries(formData.entries())
+    const {email,password,photo,name}= Object.fromEntries(formData.entries())
 
      setErrMessage('')
      
@@ -22,6 +24,18 @@ if (passRange.test(password)===false) {
 }
     createUser(email,password)
      .then((result) => {
+      const profile={
+            displayName:name,
+            photoURL: photo,
+            email:email
+
+      }
+      updatePro(profile)
+        .then(()=>{
+
+          }).catch((error)=>{
+            // console.log(error)
+          })
                 Swal.fire({
           position: "top-end",
           icon: "success",
@@ -29,6 +43,7 @@ if (passRange.test(password)===false) {
           showConfirmButton: false,
           timer: 1500
         });
+         navigate( location?.state || '/' )
             }).catch((error) => {
                setErrMessage(error.message)
             })
@@ -44,6 +59,7 @@ googleSignIn()
           showConfirmButton: false,
           timer: 1500
         });
+         navigate( location?.state || '/' )
             }).catch((error) => {
               
             })

@@ -1,5 +1,6 @@
 import React from 'react'
 import { PiBowlFoodFill } from 'react-icons/pi'
+import { NavLink } from 'react-router'
 
 const Footer = () => {
   return (
@@ -7,12 +8,13 @@ const Footer = () => {
     <div>
       <a className="btn btn-ghost text-xl"><PiBowlFoodFill size={36} /></a>   
     </div>
-  <nav className="grid grid-flow-col gap-4">
-    <a className="link link-hover">About us</a>
-    <a className="link link-hover">Contact</a>
-    <a className="link link-hover">Jobs</a>
-    <a className="link link-hover">Press kit</a>
-  </nav>
+ <ul className="grid grid-flow-col gap-4">
+  <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/fridge'>Fridge</NavLink></li>
+ </ul>
+
+ 
+ 
  
   <aside>
     <p>Copyright © {new Date().getFullYear()} - All right reserved by Food Expiry Tracker System Ltd</p>

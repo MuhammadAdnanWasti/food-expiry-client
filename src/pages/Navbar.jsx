@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { use } from 'react'
 import { PiBowlFoodFill } from 'react-icons/pi'
-import { Link, NavLink } from 'react-router'
+import { Link, NavLink, useNavigate } from 'react-router'
+import { AuthContext } from '../context/AuthContext'
 
 const Navbar = () => {
+  const {user,signOutUser}=use(AuthContext)
+  const navigate=useNavigate()
+  const handleSignOut=() => { 
+     signOutUser()
+.then(()=>{
+  setTimeout(() => {  navigate('/')}, 100)
+
+}).catch(error=>{
+  // console.log(error)
+})
+   }
   return (
     <div>
     <div className="navbar bg-base-100 shadow-sm">
@@ -14,10 +26,15 @@ const Navbar = () => {
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><NavLink to='/'>Home</NavLink></li>
+       <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/fridge'>Fridge</NavLink></li>
-        <li><NavLink to='/addFood'>Add Food</NavLink></li>
+       {
+        user &&
+        <>
+         <li><NavLink to='/addFood'>Add Food</NavLink></li>
         <li><NavLink to='/myItems'>My items</NavLink></li>
+        </>
+       }
        
       </ul>
     </div>
@@ -27,13 +44,40 @@ const Navbar = () => {
     <ul className="menu menu-horizontal px-1">
       <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/fridge'>Fridge</NavLink></li>
-        <li><NavLink to='/addFood'>Add Food</NavLink></li>
+       {
+        user &&
+        <>
+         <li><NavLink to='/addFood'>Add Food</NavLink></li>
         <li><NavLink to='/myItems'>My items</NavLink></li>
+        </>
+       }
     </ul>
   </div>
   <div className="navbar-end">
-     <Link className="btn " to='/auth/login'>Login</Link>
+     {user ? 
+   <>
+  <div className="dropdown dropdown-end ">
+           <div className='flex gap-2'>
+             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img alt="User Avatar" src={user.photoURL} />
+              </div>
+            </div>
+            <ul>
+               <li><button className='btn btn-primary' onClick={handleSignOut}>Log Out</button></li>
+            </ul>
+           </div>
+            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+           
+             <li>Email:{user.email}</li>
+             
+            </ul>
+          </div>
+    
+   </>:<>
+   <Link className="btn " to='/auth/login'>Login</Link>
    <Link className="btn " to='/auth/register'>Register</Link>
+  </>}
   </div>
 </div>
     </div>

@@ -1,10 +1,12 @@
 import React, { use } from 'react'
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
 import Swal from 'sweetalert2';
 
 const Login = () => {
   const {googleSignIn, signIn}=use(AuthContext)
+    const navigate=useNavigate()
+    const location=useLocation()
   const handleLogin =(e) => { 
 e.preventDefault()
 const formData=new FormData(e.target);
@@ -20,6 +22,7 @@ const formData=new FormData(e.target);
           showConfirmButton: false,
           timer: 1500
         });
+        navigate( location?.state || '/' )
             }).catch((error) => {
                Swal.fire({
         icon: "error",
@@ -39,6 +42,7 @@ googleSignIn()
                           showConfirmButton: false,
                           timer: 1500
                         });
+                         navigate( location?.state || '/' )
             }).catch((error) => {
               
             })
