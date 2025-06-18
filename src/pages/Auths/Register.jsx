@@ -81,7 +81,7 @@ googleSignIn()
           <label className="label">Password</label>
           <input type="password" name='password' className="input" placeholder="Password" />
          
-          <button className="btn btn-neutral mt-4">Login</button>
+          <button className="btn btn-neutral mt-4">Register</button>
             <p className="text-sm text-primary text-center mt-6">
             Already have an account?
             <Link to="/auth/login" className="text-purple-600 hover:underline ml-1">Login</Link>

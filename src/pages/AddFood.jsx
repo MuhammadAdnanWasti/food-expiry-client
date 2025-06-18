@@ -1,45 +1,60 @@
-import React from 'react'
+import React, { use } from 'react'
+import { AuthContext } from '../context/AuthContext'
+import axios from 'axios'
+import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router'
 
 const AddFood = () => {
+  const {user}=use(AuthContext)
+  const navigate=useNavigate()
+  const handleSubmit=(e) => { 
+     e.preventDefault();
+        const form=e.target;
+        const formData=new FormData(form)
+        const data= Object.fromEntries(formData.entries())
+        data.createdAt= new Date()
+        
+        axios.post("http://localhost:3000/foods",data)
+         .then(res=>{
+              Swal.fire({
+                     position: "top-end",
+                     icon: "success",
+                     title: "Your data has successfully added",
+                     showConfirmButton: false,
+                     timer: 1500
+                   });
+                   navigate( '/myItems' )
+        })
+        .catch(error=>{
+            console.log(error)
+        })
+  }
   return (
      <div>
-      <h1 className='text-3xl font-bold text-center my-9 text-amber-100'>Please Add a food item:</h1>
-      <form  className='flex justify-center items-center flex-col my-9'>
+      <h1 className='text-3xl font-bold text-center my-9 text-amber-500'>Please Add a food item:</h1>
+      <form onSubmit={handleSubmit}  className='flex justify-center items-center flex-col my-9'>
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-  <legend className="fieldset-legend">Basic info</legend>
+ 
 
   <label className="label"> Food Title</label>
   <input type="text"  name='title' className="input" placeholder="Food title" />
 
-  <label className="label">Company</label>
-  <input type="text" name='company' className="input" placeholder="Company" />
-  <label className="label">Location</label>
-  <input type="text" name='location' className="input" placeholder="Location" />
-  <label className="label">Company Logo</label>
-  <input type="url" name='company_logo' className="input" placeholder="Company Logo" />
+  <label className="label">Quantity</label>
+  <input type='number' name='quantity' className="input" placeholder="Quantity" />
+ 
+  <label className="label">Food Image</label>
+  <input type="url" name='food_image' className="input" placeholder="Food Image" />
 
   
 </fieldset>
 
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-  <legend className="fieldset-legend">Job type</legend>
-
- <div className="filter">
-  <input className="btn filter-reset" type="radio" name="jobType" aria-label="All"/>
-  <input className="btn" type="radio" name="jobType" aria-label="On-site" value='On-site'/>
-  <input className="btn" type="radio" name="jobType" aria-label="Remote" value='Remote'/>
-  <input className="btn" type="radio" name="jobType" aria-label="Hybrid" value='Hybrid'/>
-</div>
-
-  
-</fieldset>
-
+       
 
 
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
   <legend className="fieldset-legend">Food Catagory</legend>
 
- <select defaultValue="Food category" className="select">
+ <select defaultValue="Food category" name='catagory' className="select">
   <option disabled={true}>Food category</option>
   <option>Dairy</option>
   <option>Meat</option>
@@ -51,55 +66,36 @@ const AddFood = () => {
 </fieldset>
 
    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-  <legend className="fieldset-legend">Date</legend>
-  <input type="date" name='applicationDeadline' className="input" />
+  <legend className="fieldset-legend">Expiry Date</legend>
+  <input type="date" name='expiry_date' className="input" />
 </fieldset>
 
 
 
-   <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-  <legend className="fieldset-legend">Salary Range</legend>
-    <label className="label">Minimum Salary</label>
-  <input type="text"  name='min' className="input" placeholder="Minimum Salary" />
-
-  <label className="label">Maximum Salary</label>
-  <input type="text" name='max' className="input" placeholder="Maximum Salary" />
-  <label className="label">Currency</label>
- <select defaultValue="Select a currency" name='currency' className="select">
-  <option disabled={true}>Select a currency</option>
-  <option>BDT</option>
-  <option>USD</option>
-  <option>EU</option>
-</select>
-</fieldset>
+   
 
 
 
 
    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-  <legend className="fieldset-legend">Job Description</legend>
-<textarea className="textarea" name='description' placeholder="Bio"></textarea>
+  <legend className="fieldset-legend">Description</legend>
+<textarea className="textarea" name='description' placeholder="Description"></textarea>
 </fieldset>
-   <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-  <legend className="fieldset-legend">Job Requirements</legend>
-<textarea className="textarea" name='requirements' placeholder="Requirements(separate by comma)"></textarea>
-</fieldset>
-
+   
 
 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-  <legend className="fieldset-legend">HR info</legend>
+  <legend className="fieldset-legend">User info</legend>
 
- <label className="label">Name</label>
-          <input type="text" name='hr_name' className="input" placeholder="Name" />
+ 
          <label className="label">Email</label>
-          <input type="email"  name='hr_email' className="input" placeholder="Email" />
+          <input type="email"  name='email' defaultValue={user.email} className="input" placeholder="Email" />
           
   
 </fieldset>
 
 
 
- <button className="btn btn-neutral mt-4">Add Job</button>
+ <button className="btn btn-neutral mt-4">Add Food</button>
       </form>
     </div>
   )

@@ -12,6 +12,8 @@ import PrivateRoute from "./PrivateRoute";
 import AddFood from "../pages/AddFood";
 import MyItems from "../pages/MyItems";
 import Fridge from "../pages/Fridge";
+import FoodDetails from "../pages/FoodDetails";
+import Update from "../pages/Update";
 
 let router = createBrowserRouter([
   {
@@ -19,9 +21,21 @@ let router = createBrowserRouter([
     Component: MainLayout,
      children:[
         {index:true, Component:Home},
-        {path:'fridge',Component:Fridge},
+        {path:'fridge',Component:Fridge,
+          loader:()=>fetch('http://localhost:3000/foods')
+        },
+        {
+          path:'foodDetails/:id',Component:FoodDetails,
+          loader:({params})=>fetch(`http://localhost:3000/foods/${params.id}`)
+        },
         {path:'addFood', element:<PrivateRoute><AddFood></AddFood></PrivateRoute>},
-        {path:'myItems', element:<PrivateRoute><MyItems></MyItems></PrivateRoute>},
+        {path:'myItems', element:<PrivateRoute><MyItems></MyItems></PrivateRoute>,
+           loader:()=>fetch('http://localhost:3000/foods')
+        },
+        {
+          path:'update/:id', element:<PrivateRoute><Update></Update></PrivateRoute>,
+           loader:({params})=>fetch(`http://localhost:3000/foods/${params.id}`)
+        }
      ]
   },
   {

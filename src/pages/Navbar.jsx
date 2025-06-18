@@ -64,7 +64,7 @@ const Navbar = () => {
               </div>
             </div>
             <ul>
-               <li><button className='btn btn-primary' onClick={handleSignOut}>Log Out</button></li>
+               <li><button className='btn bg-amber-300' onClick={handleSignOut}>Log Out</button></li>
             </ul>
            </div>
             <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
@@ -75,8 +75,8 @@ const Navbar = () => {
           </div>
     
    </>:<>
-   <Link className="btn " to='/auth/login'>Login</Link>
-   <Link className="btn " to='/auth/register'>Register</Link>
+   <Link className="btn bg-amber-300" to='/auth/login'>Login</Link>
+   <Link className="btn bg-amber-300" to='/auth/register'>Register</Link>
   </>}
   </div>
 </div>
