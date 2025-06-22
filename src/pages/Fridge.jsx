@@ -1,17 +1,58 @@
-import React from 'react'
-import { Link, useLoaderData } from 'react-router'
+
+import React, { useState } from 'react'
+import {  Link, useLoaderData } from 'react-router'
 
 const Fridge = () => {
+  const [search, setSearch]=useState('')
+  const [selectedCatagory, setSelectedCatagory]=useState('All')
+
   const foods=useLoaderData()
   
+  const categories = ['All', 'Dairy', 'Meat', 'Vegetables', 'Snacks'];
+
+  const filteredFoods=selectedCatagory==='All'
+  ?foods
+  :foods.filter(food=> food.catagory===selectedCatagory)
+  const handleSubmit=(e)=>{
+      e.preventDefault();
+        const data=e.target.search.value;
+        setSearch(data)
+       
+  }
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 my-9 mx-9'>
+   <>
+   <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mx-auto'>
+ <form onSubmit={handleSubmit} className='flex items-center justify-center gap-3'>
+    <input type="text"  name='search' className="input" placeholder='search here'/>
+    <button className="btn btn-neutral ">Search</button>
+   </form>
+     <div className="mb-4 flex items-center justify-center ">
+        <label className="font-bold mr-2">Filter by Category:</label>
+        <select
+          className="select select-bordered"
+          value={selectedCatagory}
+          onChange={(e) => setSelectedCatagory(e.target.value)}
+        >
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
+        </select>
+      </div>
+   </div>
+  
+ 
+  
+   <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 my-9 mx-9'>
      {
-      foods.map(food=> <div className="card bg-base-100 md:w-76 shadow-sm" key={food._id}>
+      filteredFoods.filter((food)=>{
+        return search.toLowerCase( ) ===''
+        ? food
+        : food.title.toLowerCase().includes(search)
+      }).map(food=> <div className="card bg-base-100 md:w-76 shadow-sm" key={food._id}>
   <figure>
     <img
       src={food.food_image}
-      alt="Food" />
+      alt="Food" className="h-48 w-full object-cover" />
   </figure>
   <div className="card-body">
     <h2 className="card-title">
@@ -41,7 +82,12 @@ const Fridge = () => {
   </div>
 </div>)
      }
+
+
+     
     </div>
+   </>
+    
   )
 }
 

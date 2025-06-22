@@ -2,15 +2,15 @@ import React from 'react'
 
 const Banner = () => {
   return (
-      <div className="carousel w-full h-[400px] rounded-lg overflow-hidden">
+      <div className="carousel w-full h-[400px] rounded-lg overflow-hidden ">
    
       <div id="slide1" className="carousel-item relative w-full">
         <img
           src="https://i.ibb.co/BVtqpBWB/Plain-Polao-Sultans-Dine.webp"
-          className="w-full"
+          className="w-full  object-cover"
           alt="Fresh Food"
         />
-        <div className="absolute flex items-center h-full left-0 top-0 bg-black bg-opacity-50 text-white p-6">
+        <div className="absolute  w-1/2 md:w-1/4 flex items-center h-full left-0 top-0 bg-black bg-opacity-50 text-white p-6">
           <div>
             <h2 className="text-3xl font-bold">Delicious Meals</h2>
             <p className="text-lg">Enjoy tasty and healthy food every day.</p>
@@ -26,10 +26,10 @@ const Banner = () => {
       <div id="slide2" className="carousel-item relative w-full">
         <img
           src='https://i.ibb.co/G3cqTGTt/Burger.jpg'
-          className="w-full "
+          className="w-full  object-cover"
           alt="Healthy Meal"
         />
-        <div className="absolute flex items-center h-full left-0 top-0 bg-black bg-opacity-50 text-white p-6">
+        <div className="absolute w-1/2 md:w-1/4 flex items-center h-full left-0 top-0 bg-black bg-opacity-50 text-white p-6">
           <div>
             <h2 className="text-3xl font-bold">Always Fresh</h2>
             <p className="text-lg">We ensure freshness in every bite.</p>
@@ -42,13 +42,13 @@ const Banner = () => {
       </div>
 
 
-      <div id="slide3" className="carousel-item relative w-full">
+      <div id="slide3" className="carousel-item relative w-full ">
         <img
-          src="https://i.ibb.co/GvV2WsMR/Pizza.jpg"
-          className="w-full"
+          src="https://i.ibb.co/7J5vRtzt/ibrahim-abdullah-k-J62-ol-TYHk-unsplash.jpg"
+          className="w-full object-cover"
           alt="Family Dining"
         />
-        <div className="absolute flex items-center h-full left-0 top-0 bg-black bg-opacity-50 text-white p-6">
+        <div className="absolute  w-1/2 md:w-1/4 flex items-center h-full left-0 top-0 bg-black bg-opacity-50 text-white p-6">
           <div>
             <h2 className="text-3xl font-bold">Feed the Community</h2>
             <p className="text-lg">Share meals, share smiles, share hope.</p>

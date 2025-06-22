@@ -20,21 +20,23 @@ let router = createBrowserRouter([
     path: "/",
     Component: MainLayout,
      children:[
-        {index:true, Component:Home},
+        {index:true, Component:Home,
+           loader:()=>fetch('https://food-expiry-tracker-server-alpha.vercel.app/nearlyExpired')
+        },
         {path:'fridge',Component:Fridge,
-          loader:()=>fetch('http://localhost:3000/foods')
+          loader:()=>fetch('https://food-expiry-tracker-server-alpha.vercel.app/foods')
         },
         {
           path:'foodDetails/:id',Component:FoodDetails,
-          loader:({params})=>fetch(`http://localhost:3000/foods/${params.id}`)
+          loader:({params})=>fetch(`https://food-expiry-tracker-server-alpha.vercel.app/foods/${params.id}`)
         },
         {path:'addFood', element:<PrivateRoute><AddFood></AddFood></PrivateRoute>},
         {path:'myItems', element:<PrivateRoute><MyItems></MyItems></PrivateRoute>,
-           loader:()=>fetch('http://localhost:3000/foods')
+           loader:()=>fetch('https://food-expiry-tracker-server-alpha.vercel.app/foods')
         },
         {
           path:'update/:id', element:<PrivateRoute><Update></Update></PrivateRoute>,
-           loader:({params})=>fetch(`http://localhost:3000/foods/${params.id}`)
+           loader:({params})=>fetch(`https://food-expiry-tracker-server-alpha.vercel.app/foods/${params.id}`)
         }
      ]
   },

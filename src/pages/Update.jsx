@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { use } from 'react'
 import { useLoaderData } from 'react-router'
 import Swal from 'sweetalert2'
+import { AuthContext } from '../context/AuthContext'
 
 const Update = () => {
     const foods=useLoaderData()
+    const {user}=use(AuthContext)
  const handleUpdate=(e) => { 
          e.preventDefault()
 const formData= new FormData(e.target)
 const updatedTask=Object.fromEntries(formData.entries())
-fetch(`http://localhost:3000/foods/${foods._id}`,{
+fetch(`https://food-expiry-tracker-server-alpha.vercel.app/foods/${foods._id}`,{
 method:'PUT',
 headers:{
-  'content-type':'application/json'
+   authorization:`Bearer ${user.accessToken}`,
+  'content-type':'application/json',
 },
 body:JSON.stringify(updatedTask)
 }).then(res=>res.json())

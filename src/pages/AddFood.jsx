@@ -14,7 +14,7 @@ const AddFood = () => {
         const data= Object.fromEntries(formData.entries())
         data.createdAt= new Date()
         
-        axios.post("http://localhost:3000/foods",data)
+        axios.post("https://food-expiry-tracker-server-alpha.vercel.app/foods",data)
          .then(res=>{
               Swal.fire({
                      position: "top-end",
@@ -26,7 +26,7 @@ const AddFood = () => {
                    navigate( '/myItems' )
         })
         .catch(error=>{
-            console.log(error)
+            // console.log(error)
         })
   }
   return (

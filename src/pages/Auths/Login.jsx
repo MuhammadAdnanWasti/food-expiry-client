@@ -42,6 +42,7 @@ googleSignIn()
                           showConfirmButton: false,
                           timer: 1500
                         });
+                        
                          navigate( location?.state || '/' )
             }).catch((error) => {
               

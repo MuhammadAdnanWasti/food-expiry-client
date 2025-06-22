@@ -38,12 +38,13 @@ const FoodDetails = () => {
     return () => clearInterval(interval); 
   }, [food.expiry_date]);
 // console.log(user)
-  const isMatched=food.email===user.email
+  const isMatched=food.email===user?.email
 // console.log(user.email)
-  const handleAddNote = async () => {
+ 
+const handleAddNote = async () => {
     if (!noteText.trim()) return;
 
-    const res = await fetch(`http://localhost:3000/foods/${food._id}/notes`, {
+    const res = await fetch(`https://food-expiry-tracker-server-alpha.vercel.app/foods/${food._id}/notes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

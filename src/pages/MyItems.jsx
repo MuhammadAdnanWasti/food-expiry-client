@@ -19,10 +19,14 @@ const MyItems = () => {
   confirmButtonText: "Yes, delete it!"
 }).then((result) => {
   if (result.isConfirmed) {
-   fetch(`http://localhost:3000/foods/${_id}`,
+   fetch(`https://food-expiry-tracker-server-alpha.vercel.app/foods/${_id}`, 
     {
-      method:'DELETE'
-    }
+      method:'DELETE',
+        headers:{
+           authorization:`Bearer ${user.accessToken}`
+        }
+     
+    }, 
    ).then(res=>res.json())
     .then(data=>{
         if(data.deletedCount){
