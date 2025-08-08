@@ -1,12 +1,42 @@
-# React + Vite
+Food Expiry Tracker System  Live link: https://food-expiry-tracker-bbdfe.web.app/  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+<img src="https://i.ibb.co.com/0RYdMVkz/Project-2.png" alt="Banner" style="width:100%;" />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is a food expiry tracker system. Its intention is to stop wasting food. It has a home page where you can see the nearly expired food and expired food items. In the the fridge section, you can see all the foods added by all users. Another two-page (myitems, addfood) is only for signed-in users. There is also firebase authentication, and jwt is integreated. 
 
-## Expanding the ESLint configuration
+# Used Technologies -
+React.js, Tailwind Css , Firebase, MongoDB, react-router, Express.js, 
+# Dependecies for Frontend-
+ React.js, Tailwind CSS, Firebase, react-router,  Stripe, DaisyUI, Sweet Alert
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Guide how to run -
+ 1. Clone the repo
+git clone https://github.com/your-username/your-frontend-repo.git
+
+ 2. Go into the project folder
+cd your-frontend-repo
+
+ 3. Install dependencies
+npm install
+
+ 4. Start the dev server
+npm run dev   
+
+
+
+
+# Features:
+🍱 Food Expiry Tracker: Designed to reduce food waste by tracking expiry dates.
+
+🏠 Home Page Overview: View nearly expired and already expired food items at a glance.
+
+🧊 Fridge Section: Displays all food items added by users, accessible to everyone.
+
+🙋‍♂️ User-Only Features:
+
+ 🔐 My Items: Personalized list of food items added by the user.
+ 
+ ➕ Add Food: Users can add food items with expiry details.
+ 
+🔐 Authentication: Firebase-based sign-in system with JWT integration for secured access.
