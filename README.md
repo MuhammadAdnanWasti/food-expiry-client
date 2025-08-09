@@ -8,7 +8,7 @@ This is a food expiry tracker system. Its intention is to stop wasting food. It 
 # Used Technologies -
 React.js, Tailwind Css , Firebase, MongoDB, react-router, Express.js, 
 # Dependecies for Frontend-
- React.js, Tailwind CSS, Firebase, react-router,  Stripe, DaisyUI, Sweet Alert
+ React.js, Tailwind CSS, Firebase, react-router,  Stripe, DaisyUI, Sweet Alert, react-motion
 
 # Guide how to run -
  1. Clone the repo
@@ -27,7 +27,6 @@ npm run dev
 
 
 # Features:
-🍱 Food Expiry Tracker: Designed to reduce food waste by tracking expiry dates.
 
 🏠 Home Page Overview: View nearly expired and already expired food items at a glance.
 
