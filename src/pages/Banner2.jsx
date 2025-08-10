@@ -2,19 +2,19 @@ import React from 'react'
 import { motion } from "motion/react"
 const Banner2 = () => {
   return (
-      <div className="hero bg-base-200 min-h-screen">
+      <div className="  min-h-screen ">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div  className='flex-1'>
        <motion.img src="https://i.ibb.co/hFmwWTDp/orange-juice-732x549-thumbnail.jpg" 
        animate={{y:[0,50,0]}}
        transition={{duration:5, repeat:Infinity}}
-        className="max-w-sm rounded-t-2xl rounded-br-2xl border-amber-200 border-l-3 border-b-3 shadow-2xl" />
+        className="w-[90%] md:max-w-sm rounded-t-2xl rounded-br-2xl border-amber-200 border-l-3 border-b-3 shadow-2xl" />
         <motion.img
       src='https://i.ibb.co/KcPg1QBf/goodvegetablesoup-73412-16x9.jpg'
       
       animate={{y:[0,50,0]}}
       transition={{duration:5,repeat:Infinity}}
-      className="max-w-sm rounded-t-2xl rounded-br-2xl border-amber-200 border-l-3 border-b-3 shadow-2xl"
+      className="w-[90%] md:max-w-sm rounded-t-2xl rounded-br-2xl border-amber-200 border-l-3 border-b-3 shadow-2xl"
     />
     </div>
     <div className='flex-1'>

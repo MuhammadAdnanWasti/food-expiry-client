@@ -11,13 +11,23 @@ import CountUp from 'react-countup'
 const Home = () => {
   const foods=useLoaderData()
 const [expiredFoods, setExpiredFoods] = useState([]);
-
+ const [loading, setLoading] = useState(true); 
 // console.log(expiredFoods)
   useEffect(() => {
     fetch('https://food-expiry-tracker-server-alpha.vercel.app/expiredFoods')
       .then(res => res.json())
-      .then(data => setExpiredFoods(data));
+      .then(data => setExpiredFoods(data))
+      .finally(() => setLoading(false));
   }, []);
+
+   if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Banner></Banner>
