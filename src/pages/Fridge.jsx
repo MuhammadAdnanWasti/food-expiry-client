@@ -33,7 +33,7 @@ const Fridge = () => {
   return (
     <>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-5 mx-auto'>
-        <form onSubmit={handleSubmit} className='flex items-center justify-center gap-3'>
+        <form onSubmit={handleSubmit} className='flex items-center justify-center gap-3 mt-3'>
           <input type="text" name='search' className="input" placeholder='search here'/>
           <button className="btn btn-neutral">Search</button>
         </form>
@@ -92,7 +92,7 @@ const Fridge = () => {
                 <div className="badge badge-outline">{food.catagory}</div>
               </div>
               <div>
-                <Link className="btn bg-amber-300" to={`/foodDetails/${food._id}`}>
+                <Link className="btn bg-amber-300 text-gray-900" to={`/foodDetails/${food._id}`}>
                   See Details
                 </Link>
               </div>

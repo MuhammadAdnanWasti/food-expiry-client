@@ -1,11 +1,18 @@
-import React, { use } from 'react'
+import React, { use, useState } from 'react'
 import { PiBowlFoodFill } from 'react-icons/pi'
 import { Link, NavLink, useNavigate } from 'react-router'
 import { AuthContext } from '../context/AuthContext'
 
 const Navbar = () => {
   const {user,signOutUser}=use(AuthContext)
+  const [theme, setTheme] = useState("light");
   const navigate=useNavigate()
+   const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
+  };
   const handleSignOut=() => { 
      signOutUser()
 .then(()=>{
@@ -16,7 +23,7 @@ const Navbar = () => {
 })
    }
   return (
-    <div className=' bg-amber-300'>
+    <div className=' bg-amber-300 text-gray-900'>
     <div className="navbar shadow-sm  max-w-[1200px] mx-auto ">
   <div className="navbar-start">
     <div className="dropdown">
@@ -29,30 +36,30 @@ const Navbar = () => {
        <li><NavLink to='/' className={({ isActive }) =>
           isActive
             ? "text-blue-700 font-bold underline" // Active styles
-            : "text-base-content hover:text-primary"
+            : "text-gray-900 hover:text-primary"
         }>Home</NavLink></li>
         <li><NavLink to='/fridge' className={({ isActive }) =>
           isActive
             ? "text-blue-700 font-bold underline" // Active styles
-            : "text-base-content hover:text-primary"
+            : "text-gray-900 hover:text-primary"
         }>Fridge</NavLink></li>
         <li><NavLink to='/help' className={({ isActive }) =>
           isActive
             ? "text-blue-700 font-bold underline" // Active styles
-            : "text-base-content hover:text-primary"
+            : "text-gray-900 hover:text-primary"
         }>Help & Support</NavLink></li>
        {
         user &&
         <>
-         <li><NavLink to='/addFood' className={({ isActive }) =>
+         <li ><NavLink to='/addFood' className={({ isActive }) =>
           isActive
             ? "text-blue-700 font-bold underline" // Active styles
-            : "text-base-content hover:text-primary"
+            : "text-gray-900 hover:text-primary"
         }>Add Food</NavLink></li>
         <li><NavLink to='/myItems' className={({ isActive }) =>
           isActive
             ? "text-blue-700 font-bold underline" // Active styles
-            : "text-base-content hover:text-primary"
+            : "text-gray-900 hover:text-primary"
         }>My items</NavLink></li>
         </>
        }
@@ -63,20 +70,20 @@ const Navbar = () => {
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-       <li><NavLink to='/' className={({ isActive }) =>
+       <li className='text-gray-700'><NavLink to='/' className={({ isActive }) =>
           isActive
             ? "text-blue-700 font-bold underline" // Active styles
-            : "text-base-content hover:text-primary"
+            : "text-gray-900 hover:text-primary"
         }>Home</NavLink></li>
         <li><NavLink to='/fridge' className={({ isActive }) =>
           isActive
             ? "text-blue-700 font-bold underline" // Active styles
-            : "text-base-content hover:text-primary"
+            : "text-gray-900 hover:text-primary"
         }>Fridge</NavLink></li>
         <li><NavLink to='/help' className={({ isActive }) =>
           isActive
             ? "text-blue-700 font-bold underline" // Active styles
-            : "text-base-content hover:text-primary"
+            : "text-gray-900 hover:text-primary"
         }>Help & Support</NavLink></li>
        {
         user &&
@@ -84,18 +91,21 @@ const Navbar = () => {
          <li><NavLink to='/addFood' className={({ isActive }) =>
           isActive
             ? "text-blue-700 font-bold underline" // Active styles
-            : "text-base-content hover:text-primary"
+            : "text-gray-900 hover:text-primary"
         }>Add Food</NavLink></li>
         <li><NavLink to='/myItems' className={({ isActive }) =>
           isActive
             ? "text-blue-700 font-bold underline" // Active styles
-            : "text-base-content hover:text-primary"
+            : "text-gray-900 hover:text-primary"
         }>My items</NavLink></li>
         </>
        }
     </ul>
   </div>
   <div className="navbar-end">
+    <button onClick={toggleTheme} className="btn btn-sm btn-outline">
+      {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+    </button>
      {user ? 
    <>
   <div className="dropdown dropdown-end ">

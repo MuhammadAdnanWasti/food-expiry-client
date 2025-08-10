@@ -31,7 +31,7 @@ const AddFood = () => {
   }
   return (
      <div>
-      <h1 className='text-3xl font-bold text-center my-9 text-amber-500'>Please Add a food item:</h1>
+      <h1 className='text-3xl font-bold text-center my-9 text-amber-300'>Please Add a food item:</h1>
       <form onSubmit={handleSubmit}  className='flex justify-center items-center flex-col my-9'>
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
  

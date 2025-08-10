@@ -18,7 +18,7 @@ const Banner2 = () => {
     />
     </div>
     <div className='flex-1'>
-      <motion.h1 className='text-3xl font-extrabold text-amber-500'
+      <motion.h1 className='text-3xl font-extrabold text-amber-300'
       animate={{scale:[0,1]}}
     transition={{duration:5,repeat:Infinity}}
       >

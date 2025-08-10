@@ -101,7 +101,7 @@ const Help = () => {
   return (
     <div className="min-h-screen bg-base-100">
       {/* Header */}
-      <div className=" text-black">
+      <div >
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-4xl font-bold mb-2 text-center">Help & Support</h1>
           <p className="text-lg opacity-80 text-center">Get the most out of your Food Expiry Tracker</p>
@@ -190,7 +190,7 @@ const Help = () => {
             <h2 className="text-3xl font-bold mb-6">Troubleshooting</h2>
             <div className="space-y-4">
               {troubleshooting.map((item, index) => (
-                <div key={index} className="alert alert-info">
+                <div key={index} className="alert alert-info bg-base-200 border-0">
                   <div className="flex-1">
                     <h3 className="font-bold text-lg mb-2">Problem: {item.issue}</h3>
                     <p className="text-base-content/80">

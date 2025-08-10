@@ -25,7 +25,7 @@ const [expiredFoods, setExpiredFoods] = useState([]);
      
      {/* countup */}
     <div className="flex justify-center my-7">
-  <div className="stats stats-vertical lg:stats-horizontal shadow text-amber-700">
+  <div className="stats stats-vertical lg:stats-horizontal shadow ">
     <div className="stat">
       <div className="stat-title">Target Customers:</div>
       <div className="stat-value">
@@ -52,7 +52,7 @@ const [expiredFoods, setExpiredFoods] = useState([]);
 
 <Banner2></Banner2>
       {/* nearly Expired */}
-<h1 className='text-3xl font-extrabold  text-amber-500 text-center'>Nearly Expired Itmes</h1>
+<h1 className='text-3xl font-extrabold  text-amber-300 text-center'>Nearly Expired Itmes</h1>
      
         
      {
@@ -81,7 +81,7 @@ const [expiredFoods, setExpiredFoods] = useState([]);
    <p>Expiry date: {food.expiry_date}</p>
    
     <div>
-     <Link className="btn bg-amber-300" to={`/foodDetails/${food._id}`}>See Details</Link>
+     <Link className="btn bg-amber-300 text-gray-900" to={`/foodDetails/${food._id}`}>See Details</Link>
     </div>
   </div>
 </div>)}
@@ -96,7 +96,7 @@ const [expiredFoods, setExpiredFoods] = useState([]);
 {/* Expired */}
    
       <section>
-        <h2 className="text-2xl font-bold text-amber-500 text-center">❌ Expired Foods </h2>
+        <h2 className="text-2xl font-bold text-amber-300 text-center">❌ Expired Foods </h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-4 mx-7">
           {expiredFoods.map(food => (
             <div key={food._id} className="card  shadow-sm">
@@ -110,7 +110,7 @@ const [expiredFoods, setExpiredFoods] = useState([]);
                 <p>Expired on: {food.expiry_date}</p>
                 <span className="badge bg-red-600 text-white mt-2 p-5">Expired</span>
                 <div>
-     <Link className="btn bg-amber-300" to={`/foodDetails/${food._id}`}>See Details</Link>
+     <Link className="btn bg-amber-300 text-gray-900" to={`/foodDetails/${food._id}`}>See Details</Link>
     </div>
               </div>
             </div>
