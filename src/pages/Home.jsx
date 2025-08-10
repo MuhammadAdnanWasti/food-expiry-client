@@ -99,16 +99,19 @@ const [expiredFoods, setExpiredFoods] = useState([]);
         <h2 className="text-2xl font-bold text-amber-500 text-center">❌ Expired Foods </h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-4 mx-7">
           {expiredFoods.map(food => (
-            <div key={food._id} className="card border shadow-sm">
+            <div key={food._id} className="card  shadow-sm">
               <figure>
                 <img src={food.food_image} alt={food.title} className="h-48 w-full object-cover" />
               </figure>
               <div className="card-body">
                 <h3 className="text-xl font-semibold">{food.title}</h3>
-                <p>Category: {food.catagory}</p>
-                <p>Quantity: {food.quantity}</p>
+                
+                <p>Quantity: {food.description}</p>
                 <p>Expired on: {food.expiry_date}</p>
                 <span className="badge bg-red-600 text-white mt-2 p-5">Expired</span>
+                <div>
+     <Link className="btn bg-amber-300" to={`/foodDetails/${food._id}`}>See Details</Link>
+    </div>
               </div>
             </div>
           ))}
