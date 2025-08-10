@@ -17,7 +17,7 @@ const Help = () => {
     {
       question: "How do I get notified about expiring items?",
       answer:
-        "The app automatically shows notifications for items expiring within 5 days. ",
+        "The home page shows items expiring within 5 days. ",
     },
     {
       question: "Can I edit an item after adding it?",
