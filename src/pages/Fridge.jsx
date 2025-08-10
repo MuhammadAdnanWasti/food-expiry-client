@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import { Link, useLoaderData } from 'react-router'
+import { Link, useLoaderData, useNavigation } from 'react-router'
 
 const Fridge = () => {
   const [search, setSearch] = useState('')
@@ -8,6 +8,7 @@ const Fridge = () => {
   const [sortOrder, setSortOrder] = useState('asc') 
 
   const foods = useLoaderData()
+  const navigation = useNavigation();
   
   const categories = ['All', 'Dairy', 'Meat', 'Vegetables', 'Snacks']
 
@@ -29,6 +30,14 @@ const Fridge = () => {
       const dateB = new Date(b.expiry_date)
       return sortOrder === 'asc' ? dateA - dateB : dateB - dateA
     })
+
+     if (navigation.state === "loading") {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    );
+  }
 
   return (
     <>
