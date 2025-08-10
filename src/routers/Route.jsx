@@ -14,6 +14,7 @@ import MyItems from "../pages/MyItems";
 import Fridge from "../pages/Fridge";
 import FoodDetails from "../pages/FoodDetails";
 import Update from "../pages/Update";
+import Help from "../pages/Help";
 
 let router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ let router = createBrowserRouter([
         },
         {path:'fridge',Component:Fridge,
           loader:()=>fetch('https://food-expiry-tracker-server-alpha.vercel.app/foods')
+        },
+        {
+          path:'help',
+          Component:Help
         },
         {
           path:'foodDetails/:id',Component:FoodDetails,

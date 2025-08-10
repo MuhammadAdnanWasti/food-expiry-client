@@ -4,7 +4,8 @@ import { NavLink } from 'react-router'
 
 const Footer = () => {
   return (
-   <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
+  <div className='bg-base-200'>
+     <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10  max-w-[1200px] mx-auto ">
     <div>
       <a className="btn btn-ghost text-xl"><PiBowlFoodFill size={36} /></a>   
     </div>
@@ -21,6 +22,7 @@ const Footer = () => {
     <p>The Food Expiry Tracker System is a web app that helps users track food items and get alerts before they expire. It aims to reduce food waste by allowing users to add, view, update, and manage food with expiry dates. </p>
   </aside>
 </footer>
+  </div>
   )
 }
 

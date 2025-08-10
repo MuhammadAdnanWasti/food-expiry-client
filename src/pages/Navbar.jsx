@@ -16,8 +16,8 @@ const Navbar = () => {
 })
    }
   return (
-    <div>
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className=' bg-amber-300'>
+    <div className="navbar shadow-sm  max-w-[1200px] mx-auto ">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,6 +28,7 @@ const Navbar = () => {
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
        <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/fridge'>Fridge</NavLink></li>
+        <li><NavLink to='/help'>Help & Support</NavLink></li>
        {
         user &&
         <>
@@ -44,6 +45,7 @@ const Navbar = () => {
     <ul className="menu menu-horizontal px-1">
       <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/fridge'>Fridge</NavLink></li>
+        <li><NavLink to='/help'>Help & Support</NavLink></li>
        {
         user &&
         <>
@@ -64,7 +66,7 @@ const Navbar = () => {
               </div>
             </div>
             <ul>
-               <li><button className='btn bg-amber-300' onClick={handleSignOut}>Log Out</button></li>
+               <li><button className='btn ' onClick={handleSignOut}>Log Out</button></li>
             </ul>
            </div>
             <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
