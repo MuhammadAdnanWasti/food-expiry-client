@@ -48,7 +48,7 @@ const Fridge = () => {
         return search.toLowerCase( ) ===''
         ? food
         : food.title.toLowerCase().includes(search)
-      }).map(food=> <div className="card bg-base-100 md:w-76 shadow-sm" key={food._id}>
+      }).map(food=> <div className="card bg-base-100  shadow-sm" key={food._id}>
   <figure>
     <img
       src={food.food_image}

@@ -24,33 +24,47 @@ const [expiredFoods, setExpiredFoods] = useState([]);
       
      
      {/* countup */}
-     <div className="stats stats-vertical lg:stats-horizontal shadow ">
-  <div className="stat">
- <div className="stat-title">Target Customers:</div>
-    <div className="stat-value"><CountUp end={10000000} duration={5}></CountUp></div>
-    
-  </div>
+    <div className="flex justify-center my-7">
+  <div className="stats stats-vertical lg:stats-horizontal shadow text-amber-700">
+    <div className="stat">
+      <div className="stat-title">Target Customers:</div>
+      <div className="stat-value">
+        <CountUp end={10000000} duration={5}></CountUp>
+      </div>
+    </div>
 
-  <div className="stat">
-     <div className="stat-title">Nearly expired:</div>
-    <div className="stat-value"><CountUp end={foods.length} duration={9}></CountUp></div>
-   
-  </div>
+    <div className="stat">
+      <div className="stat-title">Nearly expired:</div>
+      <div className="stat-value">
+        <CountUp end={foods.length} duration={9}></CountUp>
+      </div>
+    </div>
 
-  <div className="stat">
-    <div className="stat-title">Expired items:</div>
-    <div className="stat-value"> <CountUp end={expiredFoods.length} duration={9}></CountUp></div>
-   
+    <div className="stat">
+      <div className="stat-title">Expired items:</div>
+      <div className="stat-value">
+        <CountUp end={expiredFoods.length} duration={9}></CountUp>
+      </div>
+    </div>
   </div>
 </div>
+
 
 <Banner2></Banner2>
       {/* nearly Expired */}
 <h1 className='text-3xl font-extrabold  text-amber-500 text-center'>Nearly Expired Itmes</h1>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 my-9 mx-9'>
+     
         
      {
-      foods.map(food=> <div className="card bg-base-100 md:w-76 shadow-sm" key={food._id}>
+      
+      foods.length===0 ? (<div className="flex justify-center my-9 bg-green-700  p-9 text-white">
+  <p className="font-bold text-2xl">No Nearly Expired Food</p>
+</div>
+):(
+
+   <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 my-9 mx-9'>
+
+ {foods.map(food=> <div className="card bg-base-100  shadow-sm" key={food._id}>
   <figure>
     <img
       src={food.food_image}
@@ -63,25 +77,27 @@ const [expiredFoods, setExpiredFoods] = useState([]);
      
   
     </h2>
-<p>Quantity:{food.quantity}</p>
+ <p>{food.description}</p>
    <p>Expiry date: {food.expiry_date}</p>
-    <div className="card-actions justify-end">
-      <div className="badge badge-outline">{food.catagory}</div>
-     
-    </div>
+   
     <div>
      <Link className="btn bg-amber-300" to={`/foodDetails/${food._id}`}>See Details</Link>
     </div>
   </div>
-</div>)
+</div>)}
+   </div>
+
+)
+
+
      }
-    </div>
+    
  <Description></Description>
 {/* Expired */}
    
       <section>
         <h2 className="text-2xl font-bold text-amber-500 text-center">❌ Expired Foods </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4 mx-7">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-4 mx-7">
           {expiredFoods.map(food => (
             <div key={food._id} className="card border shadow-sm">
               <figure>
